@@ -1,5 +1,6 @@
 import React from 'react';
+import { CoffeeListContainer } from '../containers/CoffeeListContainer';
 
 export function CoffeeListPage() {
-  return <div>CoffeeList</div>;
+  return <div><CoffeeListContainer /></div>;
 }

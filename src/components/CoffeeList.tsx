@@ -1,7 +1,18 @@
 import React from 'react';
+import { ICoffee } from '../api/randomData/randomDataTypes';
 
-export function CoffeeList() {
+interface ICoffeeList {
+  coffeeList :Array<ICoffee> | null
+}
+
+export function CoffeeList({ coffeeList } : ICoffeeList) {
   return (
-    <div>CoffeeList</div>
+    <section>
+      {coffeeList && coffeeList.map((coffee) => (
+        <div key={coffee.id}>
+          <h1>{coffee.blend_name}</h1>
+        </div>
+      ))}
+    </section>
   );
 }
