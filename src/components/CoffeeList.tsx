@@ -9,17 +9,15 @@ interface ICoffeeList {
 
 export function CoffeeList({ coffeeList } : ICoffeeList) {
   return (
-    <section>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
-        {coffeeList && coffeeList.map((coffee) => (
-          <CoffeeCard
-            key={coffee.id}
-            blendName={coffee.blend_name}
-            origin={coffee.origin}
-            notes={coffee.notes}
-          />
-        ))}
-      </Box>
-    </section>
+    <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2}>
+      {coffeeList && coffeeList.map((coffee) => (
+        <CoffeeCard
+          key={coffee.id}
+          blendName={coffee.blend_name}
+          origin={coffee.origin}
+          notes={coffee.notes}
+        />
+      ))}
+    </Box>
   );
 }
