@@ -1,5 +1,7 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import { ICoffee } from '../api/randomData/randomDataTypes';
+import { CoffeeCard } from './CoffeeCard';
 
 interface ICoffeeList {
   coffeeList :Array<ICoffee> | null
@@ -8,11 +10,16 @@ interface ICoffeeList {
 export function CoffeeList({ coffeeList } : ICoffeeList) {
   return (
     <section>
-      {coffeeList && coffeeList.map((coffee) => (
-        <div key={coffee.id}>
-          <h1>{coffee.blend_name}</h1>
-        </div>
-      ))}
+      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+        {coffeeList && coffeeList.map((coffee) => (
+          <CoffeeCard
+            key={coffee.id}
+            blendName={coffee.blend_name}
+            origin={coffee.origin}
+            notes={coffee.notes}
+          />
+        ))}
+      </Box>
     </section>
   );
 }
