@@ -1,8 +1,6 @@
 import React from 'react';
-import './App.scss';
 import './base.scss';
 
-import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { CoffeeListPage } from './pages/CoffeeListPage';
 import { Header } from './layouts/Header';
@@ -27,14 +25,10 @@ const theme = responsiveFontSizes(createTheme({
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <Header />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<CoffeeListPage />} />
-          </Routes>
-        </div>
-      </div>
+      <Header />
+      <section className="container">
+        <CoffeeListPage />
+      </section>
     </ThemeProvider>
   );
 }
