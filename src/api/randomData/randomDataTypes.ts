@@ -7,3 +7,13 @@ export interface ICoffee {
   uid: string;
   variety: string
 }
+
+export type TResponseWithStatus = {
+  loading : boolean;
+  error : null | string;
+  clearError : () => void
+}
+
+export type TRandomCoffeeListWithStatus ={
+  response : Array<ICoffee>
+} & TResponseWithStatus

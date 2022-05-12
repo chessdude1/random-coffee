@@ -32,7 +32,7 @@ export function CoffeeCard({ blendName, origin, notes } : ICoffeeCard) {
       </CardContent>
       <CardActions>
         <Button>
-          Learn More
+          123
         </Button>
       </CardActions>
     </Card>
