@@ -1,7 +1,10 @@
 import React, { useMemo } from 'react';
 import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { ICoffee } from '../api/randomData/randomDataTypes';
 import { CoffeeCard } from './CoffeeCard';
+import { SkeletonCard } from './Skeleton';
+import errorImg from '../assets/errorImage.jpg';
 
 interface ICoffeeList {
   coffeeList :Array<ICoffee> | null;
@@ -14,8 +17,6 @@ export function CoffeeList({
   loading,
   error,
 } : ICoffeeList) {
-  console.log('', error);
-
   const successCoffeeResponseView = useMemo(() => (
     <Box sx={{
       display: 'grid',
@@ -34,13 +35,38 @@ export function CoffeeList({
     </Box>
   ), [coffeeList]);
 
-  const loadingView = useMemo(() => (
-    <h1>123</h1>
-  ), []);
+  const loadingView = useMemo(() => {
+    const skeletonArr = [];
+
+    for (let i = 0; i < 8; i += 1) {
+      skeletonArr.push(i);
+    }
+
+    return (
+      <Box sx={{
+        display: 'grid',
+        gridTemplateColumns: { sx: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' },
+        gap: '20px',
+      }}
+      >
+        {skeletonArr.map((el : number) => (
+          <SkeletonCard key={el} />
+        ))}
+      </Box>
+    );
+  }, []);
 
   const errorView = useMemo(() => (
-    <h1>321</h1>
-  ), []);
+    <Box sx={{
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+    }}
+    >
+      <Typography variant="h4">{`Ooooops, our robots have reported an error : ${error}`}</Typography>
+      <img src={errorImg} alt="error img" />
+    </Box>
+  ), [error]);
 
   const isViewError = !loading && error && errorView;
   const isViewLoading = loading && !error && loadingView;
