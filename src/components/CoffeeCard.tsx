@@ -17,8 +17,7 @@ export function CoffeeCard({ blendName, origin, notes } : ICoffeeCard) {
     <Card>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Название:
-          {blendName}
+          {`Название: ${blendName}`}
         </Typography>
         <Typography variant="h5" component="div">
           Происхождение:
@@ -26,8 +25,7 @@ export function CoffeeCard({ blendName, origin, notes } : ICoffeeCard) {
           {origin}
         </Typography>
         <Typography variant="body2">
-          Теги:
-          {notes}
+          {`Теги: ${notes}`}
         </Typography>
       </CardContent>
       <CardActions>
