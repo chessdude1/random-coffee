@@ -69,12 +69,19 @@ export function CoffeeList({
     </Box>
   ), [error]);
 
+  const emptyCoffeeListView = useMemo(() => (
+    <Typography variant="h4">Coffee not found</Typography>
+  ), []);
+
   const isViewError = !loading && error && errorView;
   const isViewLoading = loading && !error && loadingView;
   const isViewSuccess = !loading && !error && successCoffeeResponseView;
+  const isCoffeeListEmptyView = Array.isArray(coffeeList)
+&& coffeeList.length === 0 && !error && !loading && emptyCoffeeListView;
 
   return (
     <>
+      {isCoffeeListEmptyView}
       {isViewError}
       {isViewLoading}
       {isViewSuccess}
