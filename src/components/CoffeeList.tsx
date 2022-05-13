@@ -61,6 +61,7 @@ export function CoffeeList({
       display: 'flex',
       justifyContent: 'space-around',
       alignItems: 'center',
+      flexDirection: { xs: 'column', sm: 'row' },
     }}
     >
       <Typography variant="h4">{`Ooooops, our robots have reported an error : ${error}`}</Typography>

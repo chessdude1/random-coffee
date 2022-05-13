@@ -2,9 +2,9 @@ import { useState, useCallback } from 'react';
 
 export const useHttp = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const request = useCallback(async (callback : any) => {
+  const request = useCallback(async (callback: () => Promise<any>) => {
     setLoading(true);
     try {
       const response = await callback();
@@ -14,9 +14,9 @@ export const useHttp = () => {
 
       setLoading(false);
       return response;
-    } catch (e : any) {
+    } catch (e) {
       setLoading(false);
-      setError(e.message);
+      setError((e as Error).message);
       throw e;
     }
   }, []);
